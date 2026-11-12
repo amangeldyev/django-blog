@@ -1,1 +1,14 @@
-﻿<h1>Blog</h1><p>Blog royxati</p>
+﻿<h1>{{ blogs|length }} ta maqola</h1>
+{% if blogs %}
+<ul>
+{% for blog in blogs %}
+  <li>{{ forloop.counter }}. <a href="/blog/{{ blog.id }}/">{{ blog.title|title }}</a>
+  - {{ blog.text|truncatechars:40 }}</li>
+{% empty %}
+  <li>Maqola yo'q</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>Maqolalar topilmadi</p>
+{% endif %}
+<p><a href="/blog/about/">Biz haqimizda</a> | <a href="/blog/contact/">Aloqa</a></p>
